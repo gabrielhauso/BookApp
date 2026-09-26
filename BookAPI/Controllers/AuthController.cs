@@ -10,10 +10,12 @@ namespace BookAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly ITokenService _tokenService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, ITokenService tokenService)
         {
             _authService = authService;
+            _tokenService = tokenService;
         }
 
         [HttpPost("register")]
@@ -30,6 +32,24 @@ namespace BookAPI.Controllers
             return Ok(new UserResponseDTO
             {
                 Id = user.Id,
+                Username = user.Username
+            });
+        }
+
+        [HttpPost("Login")]
+
+        public async Task<ActionResult<LoginResponseDTO>> Login([FromBody] LoginRequestDTO dto)
+        {
+            var user = await _authService.LoginAsync(dto.Username, dto.Password);
+
+            if (user == null)
+            {
+                return Unauthorized("Fel användarnamn eller lösenord");
+            }
+
+            return Ok(new LoginResponseDTO
+            {
+                Token = _tokenService.GenerateToken(user),
                 Username = user.Username
             });
         }
