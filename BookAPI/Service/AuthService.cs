@@ -33,9 +33,6 @@ namespace BookAPI.Service
             _dbContext.Users.Add(newUser);
             await _dbContext.SaveChangesAsync();
 
-            _dbContext.Users.Add(newUser);
-            await _dbContext.SaveChangesAsync();
-
             var startQuotes = new List<Quote>
             {
                 new() { Text = "Citat 1", Author = "Person 1", UserId = newUser.Id },
