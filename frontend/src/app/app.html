@@ -1,7 +1,45 @@
-<div class="container mt-4">
-  <button class="btn btn-primary">
-    <i class="fa-solid fa-book"></i> Test
-  </button>
-</div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <i class="fa-solid fa-book-open"></i> BookApp
+    </a>
 
-<router-outlet/>
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fa-solid fa-book"></i> Böcker
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/quotes" routerLinkActive="active">
+            <i class="fa-solid fa-quote-left"></i> Mina citat
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">
+            <i class="fa-solid fa-right-to-bracket"></i> Logga in
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">
+            <i class="fa-solid fa-user-plus"></i> Registrera
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <router-outlet />
+</main>
