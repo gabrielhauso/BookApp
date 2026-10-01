@@ -1,1 +1,37 @@
-<p>register works!</p>
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="h4 mb-4 text-center">
+          <i class="fa-solid fa-user-plus"></i> Registrera
+        </h2>
+
+        @if (errorMessage) {
+          <div class="alert alert-danger">{{ errorMessage }}</div>
+        }
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Användarnamn</label>
+            <input id="username" name="username" class="form-control"
+                   [(ngModel)]="username" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Lösenord</label>
+            <input id="password" name="password" type="password" class="form-control"
+                   [(ngModel)]="password" required>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">
+            <i class="fa-solid fa-user-plus"></i> Skapa konto
+          </button>
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+          Har du redan ett konto? <a routerLink="/login">Logga in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
