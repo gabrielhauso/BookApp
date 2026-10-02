@@ -4,16 +4,14 @@
       <i class="fa-solid fa-book-open"></i> BookApp
     </a>
 
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#mainNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active"
-             [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <i class="fa-solid fa-book"></i> Böcker
           </a>
         </li>
@@ -24,7 +22,19 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav align-items-lg-center">
+        @if (authService.isLoggedIn()) {
+        <li class="nav-item">
+          <span class="navbar-text me-3">
+            <i class="fa-solid fa-user"></i> {{ authService.getUsername() }}
+          </span>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-danger btn-sm" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i> Logga ut
+          </button>
+        </li>
+        } @else {
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active">
             <i class="fa-solid fa-right-to-bracket"></i> Logga in
@@ -35,6 +45,7 @@
             <i class="fa-solid fa-user-plus"></i> Registrera
           </a>
         </li>
+        }
       </ul>
     </div>
   </div>
