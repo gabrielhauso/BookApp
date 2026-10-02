@@ -1,1 +1,40 @@
-<p>book-list works!</p>
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+  <h1 class="h3 mb-0"><i class="fa-solid fa-book"></i> Böcker</h1>
+  <a routerLink="/books/new" class="btn btn-primary">
+    <i class="fa-solid fa-plus"></i> Lägg till ny bok
+  </a>
+</div>
+
+@if (errorMessage) {
+  <div class="alert alert-danger">{{ errorMessage }}</div>
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+  @for (book of books; track book.id) {
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h2 class="h5 card-title">{{ book.title }}</h2>
+          <p class="card-text mb-1">
+            <i class="fa-solid fa-user-pen"></i> {{ book.author }}
+          </p>
+          <p class="card-text text-body-secondary">
+            <i class="fa-regular fa-calendar"></i> {{ book.publishedDate | date:'yyyy-MM-dd' }}
+          </p>
+        </div>
+        <div class="card-footer bg-transparent d-flex gap-2">
+          <a [routerLink]="['/books/edit', book.id]" class="btn btn-outline-secondary btn-sm">
+            <i class="fa-solid fa-pen"></i> Redigera
+          </a>
+          <button (click)="deleteBook(book)" class="btn btn-outline-danger btn-sm">
+            <i class="fa-solid fa-trash"></i> Radera
+          </button>
+        </div>
+      </div>
+    </div>
+  } @empty {
+    <div class="col-12">
+      <p class="text-body-secondary">Inga böcker än. Lägg till den första!</p>
+    </div>
+  }
+</div>
