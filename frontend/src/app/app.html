@@ -23,6 +23,16 @@
       </ul>
 
       <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item">
+          <button class="btn btn-outline-secondary btn-sm me-lg-3 my-2 my-lg-0" (click)="toggleTheme()">
+            @if (isDark) {
+            <i class="fa-solid fa-sun"></i> Ljust
+            } @else {
+            <i class="fa-solid fa-moon"></i> Mörkt
+            }
+          </button>
+        </li>
+
         @if (authService.isLoggedIn()) {
         <li class="nav-item">
           <span class="navbar-text me-3">
