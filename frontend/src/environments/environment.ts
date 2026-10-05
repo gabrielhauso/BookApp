@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: ''
+    apiUrl: 'https://bookapp-ecd6hbfcchfffsat.swedencentral-01.azurewebsites.net/api'
 };
