@@ -35,11 +35,11 @@ namespace BookAPI.Service
 
             var startQuotes = new List<Quote>
             {
-                new() { Text = "Citat 1", Author = "Person 1", UserId = newUser.Id },
-                new() { Text = "Citat 2", Author = "Person 2", UserId = newUser.Id },
-                new() { Text = "Citat 3", Author = "Person 3", UserId = newUser.Id },
-                new() { Text = "Citat 4", Author = "Person 4", UserId = newUser.Id },
-                new() { Text = "Citat 5", Author = "Person 5", UserId = newUser.Id }
+                new() { Text = "Jag tänker, alltså finns jag", Author = "René Descartes", UserId = newUser.Id },
+                new() { Text = "Kunskap är makt", Author = "Francis Bacon", UserId = newUser.Id },
+                new() { Text = "Det enda jag vet är att jag ingenting vet", Author = "Sokrates", UserId = newUser.Id },
+                new() { Text = "Premature optimization is the root of all evil", Author = "Donald Knuth", UserId = newUser.Id },
+                new() { Text = "Talk is cheap. Show me the code", Author = "Linus Torvalds", UserId = newUser.Id }
             };
 
 
